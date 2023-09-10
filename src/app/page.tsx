@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import Comment from './comment';
 import { loadMore } from './actions';
 
 export default function Home() {
@@ -9,21 +10,20 @@ export default function Home() {
 
   const handleClick = async function() {
     const newComment = await loadMore();
-    console.log(newComment);
     setComments(prev => [...prev, newComment]);
   }
-
-  console.log(comments);
 
   return (
     <>
       <button onClick={handleClick}>load more</button>
       <h2>comments</h2>
       <ul>
-        {comments.map((comment, i) => {
+        {comments.map((commentDOM, i) => {
           return (
-            <li key={i}>
-              {comment}
+            <li key={i + 1}>
+              <Comment i={i + 1}>
+                {commentDOM}
+              </Comment>
             </li>
           )
         })}
