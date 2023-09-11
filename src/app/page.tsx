@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import Comment from './comment';
 import { loadMore } from './actions';
 
 export default function Home() {
@@ -18,12 +17,10 @@ export default function Home() {
       <button onClick={handleClick}>load more</button>
       <h2>comments</h2>
       <ul>
-        {comments.map((commentDOM, i) => {
+        {comments.map((comment, i) => {
           return (
             <li key={i + 1}>
-              <Comment i={i + 1}>
-                {commentDOM}
-              </Comment>
+              {comment}
             </li>
           )
         })}
